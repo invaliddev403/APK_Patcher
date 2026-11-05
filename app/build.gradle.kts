@@ -1,7 +1,24 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
 }
+
+val releaseSigningProperties = Properties().apply {
+    val file = rootProject.file(".release-signing/keystore.properties")
+    if (file.exists()) file.inputStream().use { load(it) }
+}
+val releaseStoreFile = providers.provider { releaseSigningProperties.getProperty("storeFile") }
+val releaseStorePassword = providers.provider { releaseSigningProperties.getProperty("storePassword") }
+val releaseKeyAlias = providers.provider { releaseSigningProperties.getProperty("keyAlias") }
+val releaseKeyPassword = providers.provider { releaseSigningProperties.getProperty("keyPassword") }
+val hasReleaseSigning = listOf(
+    releaseStoreFile,
+    releaseStorePassword,
+    releaseKeyAlias,
+    releaseKeyPassword,
+).all { it.isPresent }
 
 android {
     namespace = "dev.apkpatcher"
@@ -11,13 +28,27 @@ android {
         applicationId = "dev.apkpatcher"
         minSdk = 26
         targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.1.0"
+    }
+
+    signingConfigs {
+        create("release") {
+            if (hasReleaseSigning) {
+                storeFile = file(releaseStoreFile.get())
+                storePassword = releaseStorePassword.get()
+                keyAlias = releaseKeyAlias.get()
+                keyPassword = releaseKeyPassword.get()
+            }
+        }
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
+            if (hasReleaseSigning) {
+                signingConfig = signingConfigs.getByName("release")
+            }
         }
     }
 

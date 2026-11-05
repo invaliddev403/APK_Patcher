@@ -1,6 +1,7 @@
 .gradle/
 .kotlin/
 .tools/
+.release-signing/
 local.properties
 **/build/
 *.apk

@@ -95,6 +95,12 @@ gradlew.bat testDebugUnitTest lintDebug assembleDebug
 
 The installable debug build is written to `app/build/outputs/apk/debug/app-debug.apk`.
 
+### Production release
+
+Download the current production APK from [GitHub Releases](https://github.com/invaliddev403/APK_Patcher/releases/latest). Releases use a separate production signing key, not the Android debug key.
+
+To build locally, run `gradlew.bat testDebugUnitTest lintDebug assembleRelease`. Production signing uses `.release-signing/keystore.properties` with `storeFile`, `storePassword`, `keyAlias`, and `keyPassword`. This directory and the keystore are excluded from Git. Back up both files securely; losing them prevents publishing updates with the same application signature. Never commit or publish these credentials. Without them, Gradle produces an unsigned release APK.
+
 ## Project structure
 
 - `MainActivity.kt`: Android navigation, activity results, and lifecycle integration.
