@@ -1,0 +1,9 @@
+.gradle/
+.kotlin/
+.tools/
+local.properties
+**/build/
+*.apk
+*.apks
+*.apkm
+*.xapk

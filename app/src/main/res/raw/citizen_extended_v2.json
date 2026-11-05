@@ -1,0 +1,497 @@
+{
+  "formatVersion": 1,
+  "id": "citizen-extended-v2",
+  "name": "Citizen extended patches",
+  "application": {
+    "packageName": "sp0n.citizen",
+    "displayName": "Citizen",
+    "versionName": "0.1316.0"
+  },
+  "inputs": [
+    {
+      "id": "userId",
+      "type": "secretString",
+      "required": false
+    },
+    {
+      "id": "userToken",
+      "type": "secretString",
+      "required": false
+    }
+  ],
+  "patches": [
+    {
+      "dexClass": "Lsp0n/citizen/incidentdetail/ShowPaywallUseCase;",
+      "method": "a",
+      "parameters": [
+        "Lsp0n/citizen/incidentdetail/ShowPaywallUseCase$SubscriptionFeature;"
+      ],
+      "returnType": "Z",
+      "replacement": {
+        "type": "returnBoolean",
+        "value": true
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/incidentdetail/ShowPaywallUseCase;",
+      "method": "c",
+      "parameters": [],
+      "returnType": "Z",
+      "replacement": {
+        "type": "returnBoolean",
+        "value": true
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/incidentdetail/ShowPaywallUseCase;",
+      "method": "d",
+      "parameters": [],
+      "returnType": "Z",
+      "replacement": {
+        "type": "returnBoolean",
+        "value": true
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/domain/models/user/PrivateUser;",
+      "method": "isPlusActive",
+      "parameters": [],
+      "returnType": "Z",
+      "replacement": {
+        "type": "returnBoolean",
+        "value": true
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/domain/models/user/PrivateUser;",
+      "method": "isProtectActive",
+      "parameters": [],
+      "returnType": "Z",
+      "replacement": {
+        "type": "returnBoolean",
+        "value": true
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/domain/models/user/PrivateUser;",
+      "method": "isProtectActiveOrInSetup",
+      "parameters": [],
+      "returnType": "Z",
+      "replacement": {
+        "type": "returnBoolean",
+        "value": true
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/domain/models/user/PrivateUser;",
+      "method": "isPaid",
+      "parameters": [],
+      "returnType": "Z",
+      "replacement": {
+        "type": "returnBoolean",
+        "value": true
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/domain/models/campaign/FreeEntitlementCampaign;",
+      "method": "isPremium",
+      "parameters": [],
+      "returnType": "Z",
+      "replacement": {
+        "type": "returnBoolean",
+        "value": true
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/data/common/SessionManager;",
+      "method": "getUserId",
+      "parameters": [],
+      "returnType": "Ljava/lang/String;",
+      "requiresInputs": [
+        "userId",
+        "userToken"
+      ],
+      "replacement": {
+        "type": "returnInput",
+        "inputId": "userId"
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/data/common/SessionManager;",
+      "method": "getUserToken",
+      "parameters": [],
+      "returnType": "Ljava/lang/String;",
+      "requiresInputs": [
+        "userId",
+        "userToken"
+      ],
+      "replacement": {
+        "type": "returnInput",
+        "inputId": "userToken"
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/data/common/SessionManager;",
+      "method": "isUserOnboarded",
+      "parameters": [],
+      "returnType": "Z",
+      "requiresInputs": [
+        "userId",
+        "userToken"
+      ],
+      "replacement": {
+        "type": "returnBoolean",
+        "value": true
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/data/user/dto/CitizenPlusInfoDTO;",
+      "method": "getActive",
+      "parameters": [],
+      "returnType": "Z",
+      "replacement": {
+        "type": "returnBoolean",
+        "value": true
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/data/user/dto/CitizenProtectInfoDTO;",
+      "method": "getActive",
+      "parameters": [],
+      "returnType": "Z",
+      "replacement": {
+        "type": "returnBoolean",
+        "value": true
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/domain/models/user/CitizenProtectInfo;",
+      "method": "getActive",
+      "parameters": [],
+      "returnType": "Z",
+      "replacement": {
+        "type": "returnBoolean",
+        "value": true
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/data/variablesettings/FeatureConfigValue$MonoSubscription;",
+      "method": "isSafetyToolAvailable",
+      "parameters": [],
+      "returnType": "Z",
+      "replacement": {
+        "type": "returnBoolean",
+        "value": true
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/data/variablesettings/FeatureConfigValue$MonoSubscription;",
+      "method": "getHidePremiumOnboarding",
+      "parameters": [],
+      "returnType": "Z",
+      "replacement": {
+        "type": "returnBoolean",
+        "value": true
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/data/variablesettings/FeatureConfigValue$ClarityMasterSwitch;",
+      "method": "getMapTooltipPlusUpsellEnabled",
+      "parameters": [],
+      "returnType": "Z",
+      "replacement": {
+        "type": "returnBoolean",
+        "value": true
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/data/variablesettings/FeatureConfigValue$ClarityMasterSwitch;",
+      "method": "getRadioClipsPlusUpsellEnabled",
+      "parameters": [],
+      "returnType": "Z",
+      "replacement": {
+        "type": "returnBoolean",
+        "value": true
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/data/variablesettings/FeatureConfigValue$ClarityMasterSwitch;",
+      "method": "getSettingsPlusUpsellEnabled",
+      "parameters": [],
+      "returnType": "Z",
+      "replacement": {
+        "type": "returnBoolean",
+        "value": true
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/data/variablesettings/FeatureConfigValue$CitizenPlusV1MasterSwitch;",
+      "method": "getNeighborhoodTrendsEnabled",
+      "parameters": [],
+      "returnType": "Z",
+      "replacement": {
+        "type": "returnBoolean",
+        "value": true
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/data/variablesettings/FeatureConfigValue$CitizenPlusV1MasterSwitch;",
+      "method": "getRadioClipsEnabled",
+      "parameters": [],
+      "returnType": "Z",
+      "replacement": {
+        "type": "returnBoolean",
+        "value": true
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/data/clarity/ClarityEntrypointRepository;",
+      "method": "getProfileEntrypointEnabled",
+      "parameters": [],
+      "returnType": "Z",
+      "replacement": {
+        "type": "returnBoolean",
+        "value": true
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/data/variablesettings/FeatureConfigValue$TrustedContactsConfig;",
+      "method": "getEnabled",
+      "parameters": [],
+      "returnType": "Z",
+      "replacement": {
+        "type": "returnBoolean",
+        "value": true
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/incidentdetail/ShowPaywallUseCase;",
+      "method": "e",
+      "parameters": [],
+      "returnType": "Z",
+      "replacement": {
+        "type": "returnBoolean",
+        "value": false
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/incidentdetail/ShowPaywallUseCase;",
+      "method": "f",
+      "parameters": [
+        "Ljava/lang/Boolean;"
+      ],
+      "returnType": "Z",
+      "replacement": {
+        "type": "returnBoolean",
+        "value": false
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/data/variablesettings/FeatureConfigValue$MonoSubscription;",
+      "method": "getShowPlusToPremiumEducation",
+      "parameters": [],
+      "returnType": "Z",
+      "replacement": {
+        "type": "returnBoolean",
+        "value": false
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/data/variablesettings/FeatureConfigValue$MonoSubscription;",
+      "method": "getShowPlusToPremiumProfileBanner",
+      "parameters": [],
+      "returnType": "Z",
+      "replacement": {
+        "type": "returnBoolean",
+        "value": false
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/data/variablesettings/FeatureConfigValue$PaywallHomescreenTriggerConfig;",
+      "method": "getEnabled",
+      "parameters": [],
+      "returnType": "Z",
+      "replacement": {
+        "type": "returnBoolean",
+        "value": false
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/data/social/SafetyNetworkRepository$removeNetworkIfExpired$1;",
+      "method": "invokeSuspend",
+      "parameters": [
+        "Ljava/lang/Object;"
+      ],
+      "returnType": "Ljava/lang/Object;",
+      "replacement": {
+        "type": "returnNull"
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/data/clarity/ClarityEntrypointRepository$profileEntrypointVisible$1;",
+      "method": "invokeSuspend",
+      "parameters": [
+        "Ljava/lang/Object;"
+      ],
+      "returnType": "Ljava/lang/Object;",
+      "replacement": {
+        "type": "returnStaticField",
+        "classType": "Ljava/lang/Boolean;",
+        "fieldName": "TRUE",
+        "fieldType": "Ljava/lang/Boolean;"
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/campaign/OnboardingOverridePaywallActivity;",
+      "method": "onCreate",
+      "parameters": [
+        "Landroid/os/Bundle;"
+      ],
+      "returnType": "V",
+      "replacement": {
+        "type": "dismissActivity"
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/paywall/promooffer/PromoOfferPaywallActivity;",
+      "method": "onCreate",
+      "parameters": [
+        "Landroid/os/Bundle;"
+      ],
+      "returnType": "V",
+      "replacement": {
+        "type": "dismissActivity"
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/social/safetynetwork/SafetyNetworkEducationActivity;",
+      "method": "onCreate",
+      "parameters": [
+        "Landroid/os/Bundle;"
+      ],
+      "returnType": "V",
+      "replacement": {
+        "type": "dismissActivity"
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/social/safetynetwork/FamilyPlanBenefitActivity;",
+      "method": "onCreate",
+      "parameters": [
+        "Landroid/os/Bundle;"
+      ],
+      "returnType": "V",
+      "replacement": {
+        "type": "dismissActivity"
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/paywall/superwall/MultimonthPaywallActivity;",
+      "method": "onCreate",
+      "parameters": [
+        "Landroid/os/Bundle;"
+      ],
+      "returnType": "V",
+      "replacement": {
+        "type": "dismissActivity"
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/onboarding/modules/protect/ProtectOnBoardingUpsellActivity;",
+      "method": "onCreate",
+      "parameters": [
+        "Landroid/os/Bundle;"
+      ],
+      "returnType": "V",
+      "replacement": {
+        "type": "dismissActivity"
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/premium/protect/ui/demo/PostDemoRealCallUpsellActivity;",
+      "method": "onCreate",
+      "parameters": [
+        "Landroid/os/Bundle;"
+      ],
+      "returnType": "V",
+      "replacement": {
+        "type": "dismissActivity"
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/social/safetynetwork/SafetyNetworkSingleInviteActivity$a$a$a;",
+      "method": "emit",
+      "parameters": [
+        "Ljava/lang/Object;",
+        "Lzp3;"
+      ],
+      "returnType": "Ljava/lang/Object;",
+      "replacement": {
+        "type": "returnStaticField",
+        "classType": "Lkotlin/Unit;",
+        "fieldName": "a",
+        "fieldType": "Lkotlin/Unit;"
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/social/safetynetwork/SafetyNetworkPendingInvitesActivity$a$a$a;",
+      "method": "emit",
+      "parameters": [
+        "Ljava/lang/Object;",
+        "Lzp3;"
+      ],
+      "returnType": "Ljava/lang/Object;",
+      "replacement": {
+        "type": "returnStaticField",
+        "classType": "Lkotlin/Unit;",
+        "fieldName": "a",
+        "fieldType": "Lkotlin/Unit;"
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/social/safetynetwork/FamilyPlanBenefitActivity$a$a$a;",
+      "method": "emit",
+      "parameters": [
+        "Ljava/lang/Object;",
+        "Lzp3;"
+      ],
+      "returnType": "Ljava/lang/Object;",
+      "replacement": {
+        "type": "returnStaticField",
+        "classType": "Lkotlin/Unit;",
+        "fieldName": "a",
+        "fieldType": "Lkotlin/Unit;"
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/main/MainActivity$d$a$a;",
+      "method": "emit",
+      "parameters": [
+        "Ljava/lang/Object;",
+        "Lzp3;"
+      ],
+      "returnType": "Ljava/lang/Object;",
+      "replacement": {
+        "type": "returnStaticField",
+        "classType": "Lkotlin/Unit;",
+        "fieldName": "a",
+        "fieldType": "Lkotlin/Unit;"
+      }
+    },
+    {
+      "dexClass": "Lsp0n/citizen/social/safetynetwork/SafetyNetworkEducationActivity$a$a$a;",
+      "method": "emit",
+      "parameters": [
+        "Ljava/lang/Object;",
+        "Lzp3;"
+      ],
+      "returnType": "Ljava/lang/Object;",
+      "replacement": {
+        "type": "launchActivityFromField",
+        "targetClass": "Lsp0n/citizen/social/safetynetwork/SafetyNetworkActivity;",
+        "fieldName": "d",
+        "fieldType": "Lsp0n/citizen/social/safetynetwork/SafetyNetworkEducationActivity;"
+      }
+    }
+  ]
+}
